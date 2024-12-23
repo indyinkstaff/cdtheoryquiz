@@ -1,0 +1,99 @@
+<h1>Theory Quiz</h1>
+<h2>Find the Right Character Development Theory for Your Story</h2>
+
+<form id="quizForm">
+    <div class="question">
+        <p>1. What is your primary goal for your characters?</p>
+        <label><input type="radio" name="q1" value="A"> To create an engaging hero's journey.</label><br>
+        <label><input type="radio" name="q1" value="B"> To explore their emotional depth and growth.</label><br>
+        <label><input type="radio" name="q1" value="C"> To understand their psychological development throughout life stages.</label><br>
+        <label><input type="radio" name="q1" value="D"> To analyze their personality traits and how these drive their actions.</label><br>
+        <label><input type="radio" name="q1" value="E"> To focus on the structure of the narrative and how it shapes characters.</label><br>
+        <label><input type="radio" name="q1" value="F"> To depict moral dilemmas and how they affect character decisions.</label><br>
+        <label><input type="radio" name="q1" value="G"> To explore how identity is formed and reformed over time.</label><br>
+        <label><input type="radio" name="q1" value="H"> To incorporate universal symbols and archetypes in their storytelling.</label>
+    </div>
+
+    <div class="question">
+        <p>2. Which aspect of your writing are you most concerned with?</p>
+        <label><input type="radio" name="q2" value="A"> The transformative journey of the protagonist.</label><br>
+        <label><input type="radio" name="q2" value="B"> Creating relatable, flawed characters with depth.</label><br>
+        <label><input type="radio" name="q2" value="C"> How past experiences influence character behavior.</label><br>
+        <label><input type="radio" name="q2" value="D"> Building well-rounded personalities.</label><br>
+        <label><input type="radio" name="q2" value="E"> The relationship between plot, setting, and character.</label><br>
+        <label><input type="radio" name="q2" value="F"> Characters facing ethical challenges and growth.</label><br>
+        <label><input type="radio" name="q2" value="G"> The impact of society on personal identity.</label><br>
+        <label><input type="radio" name="q2" value="H"> Using archetypes to resonate with a wide audience.</label>
+    </div>
+
+    <div class="question">
+        <p>3. How do you prefer to structure your stories?</p>
+        <label><input type="radio" name="q3" value="A"> With clear stages and transformative arcs.</label><br>
+        <label><input type="radio" name="q3" value="B"> Focusing on internal conflicts and character interactions.</label><br>
+        <label><input type="radio" name="q3" value="C"> Based on the psychological development of characters.</label><br>
+        <label><input type="radio" name="q3" value="D"> By emphasizing personality traits and their implications.</label><br>
+        <label><input type="radio" name="q3" value="E"> Following a narrative structure that highlights roles within the story.</label><br>
+        <label><input type="radio" name="q3" value="F"> Building around moral choices and ethical growth.</label><br>
+        <label><input type="radio" name="q3" value="G"> Centered on identity crises and resolutions.</label><br>
+        <label><input type="radio" name="q3" value="H"> Featuring timeless archetypes that cross cultural boundaries.</label>
+    </div>
+
+    <div class="question">
+        <p>4. What type of character do you find most intriguing?</p>
+        <label><input type="radio" name="q4" value="A"> The hero overcoming great odds.</label><br>
+        <label><input type="radio" name="q4" value="B"> The flawed individual learning from their mistakes.</label><br>
+        <label><input type="radio" name="q4" value="C"> The complex character shaped by life experiences.</label><br>
+        <label><input type="radio" name="q4" value="D"> The character whose traits drive their story.</label><br>
+        <label><input type="radio" name="q4" value="E"> The character whose actions are influenced by narrative structure.</label><br>
+        <label><input type="radio" name="q4" value="F"> The character grappling with ethical dilemmas.</label><br>
+        <label><input type="radio" name="q4" value="G"> The character undergoing a transformation of identity.</label><br>
+        <label><input type="radio" name="q4" value="H"> The archetypal character that resonates universally.</label>
+    </div>
+
+    <div class="question">
+        <p>5. What is your writing style?</p>
+        <label><input type="radio" name="q5" value="A"> Epic and adventurous.</label><br>
+        <label><input type="radio" name="q5" value="B"> Intimate and character-driven.</label><br>
+        <label><input type="radio" name="q5" value="C"> Reflective and psychological.</label><br>
+        <label><input type="radio" name="q5" value="D"> Analytical and personality-focused.</label><br>
+        <label><input type="radio" name="q5" value="E"> Structural and thematic.</label><br>
+        <label><input type="radio" name="q5" value="F"> Ethical and thought-provoking.</label><br>
+        <label><input type="radio" name="q5" value="G"> Explorative of identity and culture.</label><br>
+        <label><input type="radio" name="q5" value="H"> Symbolic and archetypal.</label>
+    </div>
+
+    <button type="button" onclick="calculateResults()">Submit</button>
+</form>
+
+<div id="result" class="results">
+    <h2>Your Result</h2>
+    <p id="resultText"></p>
+</div>
+
+<script>
+    function calculateResults() {
+        const form = document.getElementById('quizForm');
+        const results = {};
+        const inputs = form.querySelectorAll('input[type="radio"]:checked');
+
+        inputs.forEach(input => {
+            results[input.value] = (results[input.value] || 0) + 1;
+        });
+
+        const highestCategory = Object.keys(results).reduce((a, b) => results[a] > results[b] ? a : b);
+
+        const resultText = {
+            A: "You may benefit from understanding the stages of a hero's transformative journey to create compelling narratives.",
+            B: "Focusing on character growth and emotional depth will help you craft relatable and dynamic characters.",
+            C: "Explore how characters evolve through life experiences to create complex, psychologically rich individuals.",
+            D: "Analyze personality traits to create nuanced characters whose actions are driven by their distinctive traits.",
+            E: "Focus on how the interplay of plot, setting, and themes shapes your characters for a more cohesive story.",
+            F: "Delve into ethical dilemmas and moral growth to create characters that challenge readers’ beliefs.",
+            G: "Explore how personal experiences and societal influences shape character identities over time.",
+            H: "Use universal symbols and archetypes to craft timeless characters that resonate across cultures."
+        };
+
+        document.getElementById('resultText').textContent = resultText[highestCategory];
+        document.getElementById('result').style.display = 'block';
+    }
+</script>
